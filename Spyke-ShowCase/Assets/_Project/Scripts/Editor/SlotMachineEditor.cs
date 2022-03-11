@@ -13,7 +13,7 @@ public class SlotMachineEditor : Editor
         
         if(GUILayout.Button("Roll"))
         {
-            myTarget.RollAll();
+            myTarget.Roll();
         }
         
     }

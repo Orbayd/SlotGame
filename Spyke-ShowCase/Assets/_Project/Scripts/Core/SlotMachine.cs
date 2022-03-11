@@ -25,7 +25,7 @@ namespace SpykeGames.Showcase.Core
             _deckManager = new DeckManager();
             AddEvents();
         }
-        public void RollAll()
+        public void Roll()
         {
             if (!AllowRoll)
             {
