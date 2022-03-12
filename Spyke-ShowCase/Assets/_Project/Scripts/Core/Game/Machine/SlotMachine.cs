@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using SpykeGames.Showcase.Core.Column;
@@ -5,6 +6,7 @@ using SpykeGames.Showcase.Core.Dealer;
 using SpykeGames.Showcase.Core.Enums;
 using SpykeGames.Showcase.Core.Manager;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SpykeGames.Showcase.Core
 {
@@ -13,11 +15,18 @@ namespace SpykeGames.Showcase.Core
         [SerializeField]
         private SlotColumn[] Columns;
 
+        [Header("Config")]
         [SerializeField]
         private SlotMachineConfig _config;
 
+        [Header("Particle")]
         [SerializeField]
         private ParticleComponent _particleSystem;
+
+        [Header("UI")]
+        [SerializeField]
+        private Button _rollBtn;
+
         private SlotCombinationType _currentSlot;
         private DeckManager _deckManager;
         private bool AllowRoll = true;
@@ -118,6 +127,12 @@ namespace SpykeGames.Showcase.Core
         {
             AllowRoll = true;
         }
+
+        private void OnRollBtnClicked()
+        {
+            Roll();
+        }
+
         private void AddEvents()
         {
             foreach (var item in Columns)
@@ -127,7 +142,10 @@ namespace SpykeGames.Showcase.Core
 
             _particleSystem.ParticleSystemStopped += OnParticleSystemStopped;
 
+            _rollBtn.onClick.AddListener(OnRollBtnClicked);
+
         }
+
         private void RemoveEvents()
         {
             foreach (var item in Columns)
@@ -135,6 +153,8 @@ namespace SpykeGames.Showcase.Core
                 item.OnRollFinished -= OnColumnRollFinshed;
             }
             _particleSystem.ParticleSystemStopped -= OnParticleSystemStopped;
+
+            _rollBtn.onClick.RemoveAllListeners();
         }
 
         #endregion
