@@ -10,7 +10,7 @@ namespace SpykeGames.Showcase.Core
         private void Start()
         {
             _particleSystem = GetComponent<ParticleSystem>();
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
         public void OnParticleSystemStopped()
         {  
@@ -19,7 +19,7 @@ namespace SpykeGames.Showcase.Core
 
         public void Play(int maxParticles)
         {
-            gameObject.SetActive(true);
+            //gameObject.SetActive(true);
             var main = _particleSystem.main;
             main.maxParticles = maxParticles;
             _particleSystem.Play();
@@ -28,7 +28,7 @@ namespace SpykeGames.Showcase.Core
         public void Stop()
         {
             _particleSystem.Stop();
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
             ParticleSystemStopped?.Invoke();
         }
     }
