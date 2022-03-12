@@ -13,7 +13,7 @@ namespace SpykeGames.Showcase.Core.Repository
             Model = model;
         }
 
-        string dataPath = Application.dataPath;
+        string dataPath = Application.persistentDataPath;
         public void Save()
         {
             File.WriteAllText(Path.Combine(dataPath, Model.GetFilePath()), JsonConvert.SerializeObject(Model));
