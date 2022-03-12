@@ -37,23 +37,26 @@ namespace SpykeGames.Showcase.Core.Dealer
 			}
 			return _array;
 		}
+
+		//This is Haram !
 		private  Dictionary<CardDeal, int> GetDistanceMap(Dictionary<SlotCombinationType, CardDeal> bound, int index)
 		{
 			return bound.Select(x => new { Value = x.Value, Distance = x.Value.DistanceToMax(index) }).ToDictionary(x => x.Value, x => x.Distance);
 		}
+
 		private void ShiftToLeft(int cIndex, CardDeal match, CardDeal[] candidates)
 		{
 			List<int> emptyIndex = new List<int>();
 			for (int i = cIndex; i > 0; i--)
 			{
-				if (_array[i] == 0)
+				if (_array[i] == 0) //If Empty Insert
 				{
 					emptyIndex.Add(i);
 					break;
 				}
-				var range = candidates.First(x => x.Id == _array[i]).GetRange(i);
+				var currentRange = candidates.First(x => x.Id == _array[i]).GetRange(i);
 
-				for (int k = i; k >= range.Min; k--)
+				for (int k = i; k >= currentRange.Min; k--)  //Travel as far as range & shift current item to empty
 				{
 					if (_array[k] == 0)
 					{
@@ -66,12 +69,12 @@ namespace SpykeGames.Showcase.Core.Dealer
 
 				}
 			}
-
-			var r = match.GetRange(cIndex);
+			//Travers and Find min Index to set array value
+			var IndexRange = match.GetRange(cIndex);
 			var minRange = emptyIndex.First();
 			for (int j = 0; j < emptyIndex.Count(); j++)
 			{
-				if (j >= r.Min && j <= r.Max)
+				if (j >= IndexRange.Min && j <= IndexRange.Max)
 				{
 					if (minRange > emptyIndex[j])
 					{
@@ -94,11 +97,12 @@ namespace SpykeGames.Showcase.Core.Dealer
 				{
 					continue;
 				}
-				var krange = _candidates.First(x => x.Id == _array[k]).GetRange(k);
-				var nrange = _candidates.First(x => x.Id == _array[n]).GetRange(n);
+			
+				var firstItemRange = _candidates.First(x => x.Id == _array[k]).GetRange(k);
+				var SecondItemRange = _candidates.First(x => x.Id == _array[n]).GetRange(n);
 
-
-				if ((krange.Min <= n && krange.Max >= n) && (nrange.Min<=k && nrange.Max >= k))
+				//Two selected item to be shifted has to be InRange
+				if ((firstItemRange.Min <= n && firstItemRange.Max >= n) && (SecondItemRange.Min<=k && SecondItemRange.Max >= k)) 
 				{
 					var temp = _array[n];
 					_array[n] = _array[k];

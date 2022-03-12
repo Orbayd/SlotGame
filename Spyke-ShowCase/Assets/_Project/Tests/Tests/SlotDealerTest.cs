@@ -57,4 +57,21 @@ public class SlotDealerTest
 
     }
 
+    [Test]
+    public void ShuffleTest()
+    {
+        var dealer = new CardDealer();
+        dealer.CreateDeck();
+        dealer.Shuffle();
+
+        var r1 = dealer.Hit().ToArray();
+
+        dealer.Shuffle();
+        var r2 = dealer.Hit().ToArray();
+
+        Assert.IsFalse(r2.SequenceEqual(r1));
+
+
+    }
+
 }
