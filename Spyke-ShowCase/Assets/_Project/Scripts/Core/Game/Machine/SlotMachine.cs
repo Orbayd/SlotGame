@@ -76,8 +76,7 @@ namespace SpykeGames.Showcase.Core
             {
                 var column = Columns.ElementAt(i);
                 column.Roll(targets[i]);
-                //column.Roll(SlotType.Bonus);
-                yield return new WaitForSeconds(delay);
+                yield return new WaitForSeconds(UnityEngine.Random.Range(0.1f, delay));
             }
         }
 
