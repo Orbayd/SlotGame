@@ -15,6 +15,6 @@ MonoBehaviour:
   MinLimit: 100
   MaxLimit: 1100
   DefaultRollTime: 0.75
-  MaxSpintTime: 5
+  MaxSpintTime: 3
   SlotOrder: 0100000002000000000000000300000004000000010000000200000000000000
   Atlas: {fileID: 4343727234628468602, guid: d9f5830d9b80b4a9f9c787fa1cb3b90d, type: 2}
