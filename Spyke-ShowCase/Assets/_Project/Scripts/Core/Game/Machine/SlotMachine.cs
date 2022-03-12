@@ -29,8 +29,11 @@ namespace SpykeGames.Showcase.Core
 
         private SlotCombinationType _currentSlot;
         private DeckManager _deckManager;
-        private bool AllowRoll = true;
 
+        private bool _allowRoll = true;
+        private bool AllowRoll { get { return _allowRoll; } set { _allowRoll = value; OnAllowRollChanged(value); } }
+
+        
 
         #region Unity Callbacks
 
@@ -60,6 +63,7 @@ namespace SpykeGames.Showcase.Core
             {
                 return;
             }
+            AllowRoll = false;
             _currentSlot = _deckManager.Peek();
             StartCoroutine(DelayedRoll(_config.DelayRange));
         }
@@ -87,7 +91,11 @@ namespace SpykeGames.Showcase.Core
             if (slotCombination.Reward > 0)
             {
                 _particleSystem.Play(slotCombination.Reward);
-                AllowRoll = false;
+            
+            }
+            else
+            {
+                AllowRoll = true;
             }
             _deckManager.Dequeue();
         }
@@ -126,6 +134,12 @@ namespace SpykeGames.Showcase.Core
         private void OnParticleSystemStopped()
         {
             AllowRoll = true;
+           
+        }
+
+        private void OnAllowRollChanged(bool value)
+        {
+            _rollBtn.interactable = value;
         }
 
         private void OnRollBtnClicked()
