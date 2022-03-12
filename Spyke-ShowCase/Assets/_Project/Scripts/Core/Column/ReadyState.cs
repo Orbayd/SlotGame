@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace SpykeGames.Showcase.Core
 {
-    public class ReadyState : ColumnStateBase<Column>
+    public class ReadyState : ColumnStateBase<ColumnView>
     {
         public ColumnStateType State => ColumnStateType.Ready;
-        public ReadyState(Column data, ColumnConfig config) : base(data)
+        public ReadyState(ColumnView data, ColumnConfig config) : base(data)
         {
 
         }

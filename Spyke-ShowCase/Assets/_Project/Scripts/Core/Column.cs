@@ -57,9 +57,9 @@ namespace SpykeGames.Showcase.Core
         }
         private void InitStates()
         {
-            _stateMap.Add(ColumnStateType.Ready,new ReadyState(this,_config));
-            _stateMap.Add(ColumnStateType.Rolling,new RollState(this,_config,_rollCommand));
-            _stateMap.Add(ColumnStateType.Stoping,new StoppingState(this,_config,_rollCommand));
+            // _stateMap.Add(ColumnStateType.Ready,new ReadyState(this,_config));
+            // _stateMap.Add(ColumnStateType.Rolling,new RollState(this,_config,_rollCommand));
+            // _stateMap.Add(ColumnStateType.Stoping,new StoppingState(this,_config,_rollCommand));
         }
         private void InitCells()
         {

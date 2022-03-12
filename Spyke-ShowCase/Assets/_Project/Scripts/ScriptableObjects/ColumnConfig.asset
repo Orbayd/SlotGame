@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f156675ae85c4e799dc634846b41d77, type: 3}
   m_Name: ColumnConfig
   m_EditorClassIdentifier: 
-  MinLimit: -5
-  MaxLimit: 7.5
+  MinLimit: 100
+  MaxLimit: 1100
   DefaultRollTime: 0.75
   MaxSpintTime: 5
   SlotOrder: 0100000002000000000000000300000004000000010000000200000000000000
