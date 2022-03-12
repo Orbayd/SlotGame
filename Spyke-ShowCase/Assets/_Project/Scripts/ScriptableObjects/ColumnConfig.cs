@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using SpykeGames.Showcase.Core;
+using SpykeGames.Showcase.Core.Enums;
 using UnityEngine;
 using UnityEngine.U2D;
 

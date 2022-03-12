@@ -1,5 +1,5 @@
 ﻿
-namespace SpykeGames.Showcase.Core
+namespace SpykeGames.Showcase.Core.Enums
 {
     public enum SlotCombinationType
     {
@@ -23,7 +23,7 @@ namespace SpykeGames.Showcase.Core
 
     public enum ColumnStateType
     {
-        Ready, Rolling, Stoping, Stopped
+        Ready, Rolling, Stoping
     }
 
     public enum StopDelayType

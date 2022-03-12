@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using SpykeGames.Showcase.Core;
+using SpykeGames.Showcase.Core.Enums;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SlotMachineConfig", menuName = "ScriptableObjects/SlotMachineConfig", order = 1)]

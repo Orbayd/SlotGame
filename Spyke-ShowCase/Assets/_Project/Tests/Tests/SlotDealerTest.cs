@@ -4,21 +4,22 @@ using System.Linq;
 using NUnit.Framework;
 using SpykeGames.Showcase.Core;
 using SpykeGames.Showcase.Core.Dealer;
+using SpykeGames.Showcase.Core.Enums;
 using UnityEngine;
 using UnityEngine.TestTools;
 
 public class SlotDealerTest
 {
-    private SlotDeal[] _candidates;
+    private CardDeal[] _candidates;
     private Dictionary<SlotCombinationType, int[]> _results = new Dictionary<SlotCombinationType, int[]>();
 
     [SetUp]
     public void Setup()
     {
-        var dealer = new SlotDealer();
+        var dealer = new CardDealer();
         dealer.CreateDeck();
         dealer.Shuffle();
-        _candidates = SlotConfig.GetAll();
+        _candidates = DeckConfig.GetAll();
         _results = dealer.Hit()
                         .Select((x, i) => new { index = i, value = x })
                         .GroupBy(x => x.value, x => x.index)
